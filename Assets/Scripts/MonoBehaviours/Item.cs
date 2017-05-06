@@ -5,6 +5,8 @@ using UnityEngine;
 public class Item : MonoBehaviour {
 
 	public Sprite sprite;
+	public KeyCode pickUpKey;
+	public KeyCode dropKey;
 
 
 	private bool isCollectable;
@@ -12,29 +14,29 @@ public class Item : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		theInventory = FindObjectOfType<Inventory>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetMouseButtonDown(0)) {
-			
-		};
-		
+		if(Input.GetKeyUp(pickUpKey)) {
+			if(isCollectable) {
+				theInventory.AddItem(this);
+				gameObject.SetActive(false);
+			}
+		}
 	}
 
-	// Whenever player collides (it is enough close)
+	// Whenever player hits the trigger (it is enough close)
 	// the item will be collectable
-	void OnCollisionEnter2D(Collision2D other) {
-		// Collision is a moment in time when collision happen, this is why
-		// is necessary to access the gameObject from the collision object
-		if (other.gameObject.tag == "Player") {
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.tag == "Player") {
 			isCollectable = true;
 		}
 	}
 
-	void OnCollisionExit2D(Collision2D other) {
-		if (other.gameObject.tag == "Player") {
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.tag == "Player") {
 			isCollectable = false;
 		}
 	}
