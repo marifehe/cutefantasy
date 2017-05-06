@@ -3,9 +3,11 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public const int numItemSlots = 4;
+    public Sprite defaultBackgroundSprite;
 
     public Image[] itemImages = new Image[numItemSlots];
     public Item[] items = new Item[numItemSlots];
+
     public void AddItem(Item itemToAdd)
     {
         for (int i = 0; i < items.Length; i++)
