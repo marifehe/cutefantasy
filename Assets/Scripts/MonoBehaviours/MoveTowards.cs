@@ -8,6 +8,8 @@ public class MoveTowards : MonoBehaviour, IIsUnlockedByItem {
 	public Animator theAnimator;
 	public float velocity = 3;
 
+	public bool facingLeft = false;
+
 	public bool movementIsActive = false;
 
 	void Start() {
@@ -24,7 +26,10 @@ public class MoveTowards : MonoBehaviour, IIsUnlockedByItem {
 			// If the target girl is on the left, flip the origin girl since
 			// otherwise it will be facing the wrong direction
 			if (target.x < origin.x) {
-				Flip();
+				if (!facingLeft) {
+					facingLeft = true;
+					Flip();
+				}
 			}
 			transform.position = Vector2.MoveTowards(origin, target, velocity * Time.deltaTime);
 		} else {
