@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 		// When an item is used, it unlocks an action for the specified
 		// tag
 		if (itemUsed.tagThatUnlocks != null) {
+			print(">>>> tag unlocked: " + itemUsed.tagThatUnlocks);
          	GameObject[] gos = GameObject.FindGameObjectsWithTag(itemUsed.tagThatUnlocks); 
  
          	for (var i = 0; i< gos.Length; i++) {

@@ -6,7 +6,7 @@ public class UseFromInventory : MonoBehaviour {
 
 	// Key for activating the option to use an object from the inventory
 	// This can be removed and be automatic when the user enters the trigger
-	public KeyCode activateKey;
+	//public KeyCode activateKey;
 
 	private bool isActive;
 	private Inventory theInventory;

@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
      {
          GameObject objectClicked = eventData.pointerCurrentRaycast.gameObject;
+         print("object clicked: " + objectClicked.transform.name);
          // The object clicked is the background image, so we need to reference
          // the parent, and compare with the inventory children (ItemSlot children)
          if (objectClicked != null && objectClicked.transform != null) {
@@ -46,7 +47,8 @@ public class Inventory : MonoBehaviour, IPointerClickHandler
             if (items[i] == null)
             {
                 items[i] = itemToAdd;
-                itemImages[i].sprite = itemToAdd.sprite;
+                Sprite itemSprite = itemToAdd.gameObject.GetComponent<SpriteRenderer>().sprite;
+                itemImages[i].sprite = itemSprite;
                 itemImages[i].enabled = true;
                 return;
             }
@@ -60,6 +62,7 @@ public class Inventory : MonoBehaviour, IPointerClickHandler
             {
                 if (items[i] == itemToRemove)
                 {
+                    print("using the item with index: " + i);
                     // Use the item:
                     theGameManager.UseItem(items[i]);
                     items[i] = null;

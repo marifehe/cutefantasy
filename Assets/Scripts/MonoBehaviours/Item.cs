@@ -2,8 +2,7 @@
 using System;
 
 public class Item : MonoBehaviour {
-
-	public Sprite sprite;
+	
 	public KeyCode pickUpKey;
 	public string tagThatUnlocks;
 
