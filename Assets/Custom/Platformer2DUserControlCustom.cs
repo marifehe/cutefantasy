@@ -34,7 +34,7 @@ namespace UnityStandardAssets._2D
 			bool crouch = Input.GetKey(KeyCode.LeftControl);
 			if (Input.GetMouseButton (0))
 			{
-				h = (Input.mousePosition.x - Screen.width / 2) / Screen.width * 2;
+				//h = (Input.mousePosition.x - Screen.width / 2) / Screen.width * 2;
 			} else {
 				h = CrossPlatformInputManager.GetAxis ("Horizontal");
 			}
