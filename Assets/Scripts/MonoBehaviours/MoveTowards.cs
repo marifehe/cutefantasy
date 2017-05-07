@@ -21,6 +21,11 @@ public class MoveTowards : MonoBehaviour, IIsUnlockedByItem {
 			Vector2 origin = new Vector2(transform.position.x, transform.position.y);
 			Vector2 target = new Vector2(targetObject.transform.position.x,
 				targetObject.transform.position.y);
+			// If the target girl is on the left, flip the origin girl since
+			// otherwise it will be facing the wrong direction
+			if (target.x < origin.x) {
+				Flip();
+			}
 			transform.position = Vector2.MoveTowards(origin, target, velocity * Time.deltaTime);
 		} else {
 			theAnimator.SetBool("Walking", false);
@@ -35,5 +40,12 @@ public class MoveTowards : MonoBehaviour, IIsUnlockedByItem {
 
 	public void ItemUsed() {
 		movementIsActive = true;
+	}
+
+	private void Flip() {
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }
