@@ -18,6 +18,7 @@ namespace UnityStandardAssets._2D
 
         private void Awake()
         {
+			Screen.SetResolution (800, 600, true);
             // Setting up the reference.
             m_Player = GameObject.FindGameObjectWithTag("Player").transform;
         }
