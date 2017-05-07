@@ -8,18 +8,20 @@ public class Item : MonoBehaviour {
 	public Vector2 originalPosition;
 
 	private bool isCollectable;
+	private bool isBlocked;
 	private Inventory theInventory;
 
 	// Use this for initialization
 	void Start () {
 		theInventory = FindObjectOfType<Inventory>();
 		originalPosition = transform.position;
+		isBlocked = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyUp(pickUpKey)) {
-			if(isCollectable) {
+			if(isCollectable && !isBlocked) {
 				theInventory.AddItem(this);
 				gameObject.SetActive(false);
 			}
@@ -44,5 +46,9 @@ public class Item : MonoBehaviour {
 	public void Respawn() {
 		transform.position = originalPosition;
 		gameObject.SetActive(true);
+	}
+
+	public void Block() {
+		isBlocked = true;
 	}
 }
