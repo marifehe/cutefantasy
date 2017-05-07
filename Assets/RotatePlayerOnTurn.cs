@@ -18,7 +18,7 @@ public class RotatePlayerOnTurn : MonoBehaviour {
     void Awake()
     {
     halfBoxWidth = gameObject.GetComponent<BoxCollider2D>().size[0]/2;
-    x_init = gameObject.transform.position[0] - halfBoxWidth;
+    //x_init = gameObject.transform.position[0] - halfBoxWidth;
     x_end = gameObject.transform.position[0] + halfBoxWidth;
     }
 
