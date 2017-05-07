@@ -40,8 +40,4 @@ public class Item : MonoBehaviour {
 			isCollectable = false;
 		}
 	}
-
-	public bool IsCollectable() {
-		return isCollectable;
-	}
 }
