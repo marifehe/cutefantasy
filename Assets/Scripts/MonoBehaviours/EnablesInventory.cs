@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class UseFromInventory : MonoBehaviour {
+public class EnablesInventory : MonoBehaviour {
 
 	// Key for activating the option to use an object from the inventory
 	// This can be removed and be automatic when the user enters the trigger
 	//public KeyCode activateKey;
+	public string tagThatShouldUnlocked;
 
 	private bool isActive;
 	private Inventory theInventory;
@@ -34,7 +33,7 @@ public class UseFromInventory : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
 			isActive = true;
-			theInventory.EnableUsingAnItem();
+			theInventory.EnableUsingAnItem(tagThatShouldUnlocked);
 		}
 	}
 

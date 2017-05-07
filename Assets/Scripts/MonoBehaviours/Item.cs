@@ -2,9 +2,10 @@
 using System;
 
 public class Item : MonoBehaviour {
-	
+
 	public KeyCode pickUpKey;
 	public string tagThatUnlocks;
+	public Vector2 originalPosition;
 
 	private bool isCollectable;
 	private Inventory theInventory;
@@ -12,6 +13,7 @@ public class Item : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		theInventory = FindObjectOfType<Inventory>();
+		originalPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -37,5 +39,10 @@ public class Item : MonoBehaviour {
 		if (other.tag == "Player") {
 			isCollectable = false;
 		}
+	}
+
+	public void Respawn() {
+		transform.position = originalPosition;
+		gameObject.SetActive(true);
 	}
 }
