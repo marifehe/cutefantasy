@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour, IPointerClickHandler
 
     private GameManager theGameManager;
     private bool itemCanBeUsed = false;
+    private string tagThatShouldUnlocked;
 
     void Start() {
         theGameManager = FindObjectOfType<GameManager>();
@@ -63,8 +64,14 @@ public class Inventory : MonoBehaviour, IPointerClickHandler
                 if (items[i] == itemToRemove)
                 {
                     print("using the item with index: " + i);
-                    // Use the item:
-                    theGameManager.UseItem(items[i]);
+                    // Use the item only if the tag that unlocks matches the
+                    // tag that should be unlocked by the element that enabled the
+                    // inventory. Otherwise, respawn it in its original position.
+                    if (items[i].tagThatUnlocks == tagThatShouldUnlocked) {
+                        theGameManager.UseItem(items[i]);
+                    } else {
+                        items[i].Respawn();
+                    }
                     items[i] = null;
                     itemImages[i].sprite = defaultBackgroundSprite;
                     itemImages[i].enabled = true;
@@ -74,8 +81,9 @@ public class Inventory : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void EnableUsingAnItem() {
+    public void EnableUsingAnItem(string _tagThatShouldUnlocked) {
         itemCanBeUsed = true;
+        tagThatShouldUnlocked = _tagThatShouldUnlocked;
     }
 
     public void DisableUsingAnItem() {
