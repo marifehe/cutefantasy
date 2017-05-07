@@ -23,7 +23,7 @@ public class SpeechBubble : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.tag == "Player") {
-			theCanvas.enabled = true;
+			theCanvas.enabled = false;
 		}
 	}
 
