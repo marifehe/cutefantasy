@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+/*using System.Collections;
 using UnityEngine;
 using UnityEditor;
 
@@ -40,3 +40,4 @@ public class EditorGUICurveField : EditorWindow
         }
     }
 }
+*/
