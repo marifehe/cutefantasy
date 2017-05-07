@@ -9,6 +9,7 @@ namespace UnityStandardAssets._2D
 	{
 		private Platformer2DCharacterMovement m_Character;
 		private bool m_Jump;
+		public float h = 0;
 
 
 		private void Awake()
@@ -31,7 +32,12 @@ namespace UnityStandardAssets._2D
 		{
 			// Read the inputs.
 			bool crouch = Input.GetKey(KeyCode.LeftControl);
-			float h = CrossPlatformInputManager.GetAxis("Horizontal");
+			if (Input.GetMouseButton (0))
+			{
+				h = (Input.mousePosition.x - Screen.width / 2) / Screen.width * 2;
+			} else {
+				h = CrossPlatformInputManager.GetAxis ("Horizontal");
+			}
 			// Pass all parameters to the character control script.
 			m_Character.Move(h, crouch, m_Jump);
 			m_Jump = false;
