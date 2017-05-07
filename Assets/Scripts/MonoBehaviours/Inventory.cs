@@ -10,7 +10,12 @@ public class Inventory : MonoBehaviour, IPointerClickHandler
     public Image[] itemImages = new Image[numItemSlots];
     public Item[] items = new Item[numItemSlots];
 
+    private GameManager theGameManager;
     private bool itemCanBeUsed = false;
+
+    void Start() {
+        theGameManager = FindObjectOfType<GameManager>();
+    }
 
     // Called when the inventory is clicked
     public void OnPointerClick(PointerEventData eventData)
@@ -55,6 +60,8 @@ public class Inventory : MonoBehaviour, IPointerClickHandler
             {
                 if (items[i] == itemToRemove)
                 {
+                    // Use the item:
+                    theGameManager.UseItem(items[i]);
                     items[i] = null;
                     itemImages[i].sprite = defaultBackgroundSprite;
                     itemImages[i].enabled = true;

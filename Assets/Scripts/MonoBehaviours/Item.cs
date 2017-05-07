@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class Item : MonoBehaviour {
 
 	public Sprite sprite;
 	public KeyCode pickUpKey;
-	public KeyCode dropKey;
-
+	public string tagThatUnlocks;
 
 	private bool isCollectable;
 	private Inventory theInventory;
@@ -31,6 +29,7 @@ public class Item : MonoBehaviour {
 	// the item will be collectable
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
+			print(">>>>>>> Press key to collect this item");
 			isCollectable = true;
 		}
 	}

@@ -33,6 +33,7 @@ public class UseFromInventory : MonoBehaviour {
 	// the item will be active
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
+			print(">>>>>>> Press key to activate this item");
 			isActive = true;
 		}
 	}
